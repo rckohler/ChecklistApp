@@ -18,7 +18,6 @@ public class MoreBox {
     Vector<Bitmap> bitmaps = null;
     int charactersPerLine = 20;
     float x,y;
-    Bitmap buttonBitmap = null;
     Button rightB, leftB;
     public MoreBox(Vector<Textbox>t, Vector<Bitmap> b){
         rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.75f,pageHeight*.08f,pageWidth*.1f);
@@ -29,13 +28,17 @@ public class MoreBox {
     }
 
     public MoreBox(Vector<Textbox>t){
+        rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.75f,pageHeight*.08f,pageWidth*.1f);
+        leftB = new Button(ChecklistApp.lbu, ChecklistApp.lbd,pageWidth*.35f,pageHeight*.08f,pageWidth*.1f);
         this.textboxes = t;
     }
 
     public MoreBox(Textbox t){
         this.textboxes.add(t);
-
+        rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.75f,pageHeight*.08f,pageWidth*.1f);
+        leftB = new Button(ChecklistApp.lbu, ChecklistApp.lbd,pageWidth*.35f,pageHeight*.08f,pageWidth*.1f);
     }
+
 
     public void update(Canvas canvas){
         if(isVisible){
@@ -47,6 +50,14 @@ public class MoreBox {
 
 
         }
+    }
+
+    public void nextPage(){
+        if(page < textboxes.size()-1) page++;
+    }
+
+    public void lastPage(){
+        if(page > 0) page--;
     }
 
 

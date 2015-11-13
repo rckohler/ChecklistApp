@@ -29,22 +29,26 @@ public class Page extends View {
         clickY = event.getY();
         switch(event.getAction()) {
 
-            case MotionEvent.ACTION_BUTTON_PRESS:
+            case MotionEvent.ACTION_DOWN:
 
                 //handle morebox buttons
                 if (moreBox.rightB.isClicked(clickX, clickY))
                 {
-                    moreBox.page++;
+                    moreBox.nextPage();
                     ChecklistApp.checkBox.reset();
                 }
                 if (moreBox.leftB.isClicked(clickX, clickY)) {
-                    moreBox.page--;
+                    moreBox.lastPage();
+                }
+                if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
+                    if (moreBox.isVisible) moreBox.isVisible = false;
+                    else moreBox.isVisible = true;
                 }
                 //handle next and back page buttons
                 if (ChecklistApp.rightButton.isClicked(clickX, clickY))
-                    main.currentPage++;
+                    main.nextPage();
                 if (ChecklistApp.leftButton.isClicked(clickX, clickY))
-                    main.currentPage--;
+                    main.lastPage();
 
 
                     //handle checkbox
@@ -55,20 +59,15 @@ public class Page extends View {
                     //handle more button
                     break;
                 }
-
         return true;
     }
-
-
     public void update(Canvas canvas){
         moreBox.update(canvas);
         ChecklistApp.checkBox.update(canvas);
         ChecklistApp.rightButton.update(canvas);
         ChecklistApp.leftButton.update(canvas);
+        ChecklistApp.moreButton.update(canvas);
         textbox.update(canvas);
-        //add the morebox to the screen
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!this is where we should fix stuff
-
     }
 
     protected void onDraw(Canvas canvas) {
@@ -78,7 +77,5 @@ public class Page extends View {
             Thread.sleep(100);
         } catch (InterruptedException e) { }
         invalidate();
-
     }
-
 }

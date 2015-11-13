@@ -12,8 +12,8 @@ import java.util.Vector;
  */
 public class Textbox {
     byte charactersPerLine = 40;
-    float x,y;
-    float badNumber = 20;
+    float x=ChecklistApp.screenWidth*.1f,y = ChecklistApp.screenHeight*.1f;
+    float badNumber = 40;
     Paint paint;
     Vector<String> lines = new Vector<>();
     public Textbox (Vector<String> lines){
@@ -66,9 +66,10 @@ public class Textbox {
 
 
     public void update(Canvas canvas){
+        float tempY = y;
         for (int i = 0; i < lines.size(); i++) {
-            canvas.drawText(lines.elementAt(i),x,y,paint);
-            y+=badNumber*1.5;
+            canvas.drawText(lines.elementAt(i),x,tempY,paint);
+            tempY+=badNumber*1.5;
         }
     }
 }

@@ -29,16 +29,16 @@ public class ChecklistApp extends Activity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay()
                 .getMetrics(metrics);
-        screenHeight = metrics.widthPixels;
-        screenWidth = metrics.heightPixels;
+        screenWidth = metrics.widthPixels;
+        screenHeight = metrics.heightPixels;
         super.onCreate(savedInstanceState);
         loadImages();
         createPages();
 
-        leftButton = new Button(lbu,lbd,screenWidth*.25f,screenHeight*.2f, screenHeight*.15f);
-        rightButton = new Button(rbu,rbd,screenWidth*.75f,screenHeight*.2f, screenHeight*.15f);
-        moreButton = new Button(mbu,mbd,screenWidth*.5f,screenHeight*.2f, screenHeight*.15f);
-        checkBox = new Button(box,checkbox,screenWidth*.25f,screenHeight*.4f, screenHeight*.4f);
+        leftButton = new Button(lbu,lbd,screenWidth*.25f,screenHeight*.2f, screenWidth*.12f);
+        rightButton = new Button(rbu,rbd,screenWidth*.75f,screenHeight*.2f, screenWidth*.12f);
+        moreButton = new Button(mbu,mbd,screenWidth*.5f,screenHeight*.2f, screenWidth*.12f);
+        checkBox = new Button(box,checkbox,screenWidth*.05f,screenHeight*.1f, screenWidth*.04f);
 
         setContentView(pages.elementAt(currentPage));
     }
@@ -57,7 +57,7 @@ public class ChecklistApp extends Activity {
     }
 
     public void nextPage(){
-        if(currentPage<11){
+        if(currentPage<10){
             currentPage++;
             setContentView(pages.elementAt(currentPage));
         }
