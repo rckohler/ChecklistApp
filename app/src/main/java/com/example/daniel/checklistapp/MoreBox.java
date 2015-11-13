@@ -25,20 +25,32 @@ public class MoreBox {
 
         this.bitmaps = b;
         this.textboxes = t;
+        placeTextBoxAndButtons();
     }
-
     public MoreBox(Vector<Textbox>t){
         rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.75f,pageHeight*.08f,pageWidth*.1f);
         leftB = new Button(ChecklistApp.lbu, ChecklistApp.lbd,pageWidth*.35f,pageHeight*.08f,pageWidth*.1f);
         this.textboxes = t;
+        placeTextBoxAndButtons();
     }
 
     public MoreBox(Textbox t){
         this.textboxes.add(t);
         rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.75f,pageHeight*.08f,pageWidth*.1f);
         leftB = new Button(ChecklistApp.lbu, ChecklistApp.lbd,pageWidth*.35f,pageHeight*.08f,pageWidth*.1f);
+        placeTextBoxAndButtons();
+
     }
 
+    private void placeTextBoxAndButtons(){
+        for(int i = 0; i < textboxes.size();i++) {
+            textboxes.elementAt(i).x = pageWidth * .2f;
+            textboxes.elementAt(i).y = pageHeight * .5f;
+        }
+        rightB = new Button(ChecklistApp.rbu, ChecklistApp.rbd,pageWidth*.9f,pageHeight*.5f,pageWidth*.08f);
+        leftB = new Button(ChecklistApp.lbu, ChecklistApp.lbd,pageWidth*.1f,pageHeight*.5f,pageWidth*.08f);
+
+    }
 
     public void update(Canvas canvas){
         if(isVisible){

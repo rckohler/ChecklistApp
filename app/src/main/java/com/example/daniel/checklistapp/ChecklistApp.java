@@ -55,17 +55,25 @@ public class ChecklistApp extends Activity {
 
 
     }
+    public static void resetButtons(){
+        rightButton.reset();
+        leftButton.reset();
+       // checkBox.reset();
+        moreButton.reset();
+    }
 
     public void nextPage(){
         if(currentPage<10){
             currentPage++;
             setContentView(pages.elementAt(currentPage));
+            checkBox.reset();
         }
     }
 
     public void lastPage(){
         if(currentPage>0){
             currentPage--;
+            checkBox.reset();
             setContentView(pages.elementAt(currentPage));
         }
     }

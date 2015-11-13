@@ -21,6 +21,7 @@ public class Page extends View {
         main = (ChecklistApp)(context);
         textbox = t;
         moreBox = m;
+
     }
 
     public boolean onTouchEvent(MotionEvent event){
@@ -28,69 +29,68 @@ public class Page extends View {
         clickX = event.getX();
         clickY = event.getY();
         switch(event.getAction()) {
-
             case MotionEvent.ACTION_DOWN:
 
-        //handle morebox buttons
-        if (moreBox.rightB.isClicked(clickX, clickY))
-        {
-            moreBox.nextPage();
-        }
-        if (moreBox.leftB.isClicked(clickX, clickY)) {
-            moreBox.lastPage();
-        }
-        if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
-            if (moreBox.isVisible) moreBox.isVisible = false;
-            else moreBox.isVisible = true;
-        }
-        //handle next and back page buttons
-        if (ChecklistApp.rightButton.isClicked(clickX, clickY))
-            main.nextPage();
-        if (ChecklistApp.leftButton.isClicked(clickX, clickY))
-            main.lastPage();
+            //handle morebox buttons
+            if (moreBox.rightB.isClicked(clickX, clickY))
+            {
+                moreBox.nextPage();
+            }
+            if (moreBox.leftB.isClicked(clickX, clickY)) {
+                moreBox.lastPage();
+            }
 
+            //handle next and back page buttons
+            if (ChecklistApp.rightButton.isClicked(clickX, clickY))
+                main.nextPage();
+            if (ChecklistApp.leftButton.isClicked(clickX, clickY))
+                main.lastPage();
 
-        //handle checkbox
-        if (ChecklistApp.checkBox.isClicked(clickX,clickY)){
-            ChecklistApp.checkBox.isActive=false;
-        }
-        //if the checkbox has been clicked add the checkbox arrow to the checkbox
-        //handle more button
-        break;
+            if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
+                if (moreBox.isVisible) moreBox.isVisible = false;
+                else moreBox.isVisible = true;
+            }
 
-        case MotionEvent.ACTION_UP:
-
-        //handle morebox buttons
-        if (moreBox.rightB.isClicked(clickX, clickY))
-        {
-            moreBox.nextPage();
-        }
-        if (moreBox.leftB.isClicked(clickX, clickY)) {
-            moreBox.lastPage();
-        }
-        if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
-            if (moreBox.isVisible) moreBox.isVisible = false;
-            else moreBox.isVisible = true;
-        }
-        //handle next and back page buttons
-        if (ChecklistApp.rightButton.isClicked(clickX, clickY))
-            main.nextPage();
-        if (ChecklistApp.leftButton.isClicked(clickX, clickY))
-            main.lastPage();
-
-
-        //handle checkbox
-        if (ChecklistApp.checkBox.isClicked(clickX,clickY)){
-            ChecklistApp.checkBox.isActive=false;
-        }
-        //if the checkbox has been clicked add the checkbox arrow to the checkbox
-        //handle more button
-        ChecklistApp.resetButtons();
-            moreBox.resetButtons();
+            //if the checkbox has been clicked add the checkbox arrow to the checkbox
+            //handle more button
             break;
-    }
+
+            case MotionEvent.ACTION_UP:
+
+            //handle morebox buttons
+            if (moreBox.rightB.isClicked(clickX, clickY))
+            {
+                moreBox.nextPage();
+            }
+            if (moreBox.leftB.isClicked(clickX, clickY)) {
+                moreBox.lastPage();
+            }
+            if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
+                if (moreBox.isVisible) moreBox.isVisible = false;
+                else moreBox.isVisible = true;
+            }
+            //handle next and back page buttons
+            if (ChecklistApp.rightButton.isClicked(clickX, clickY))
+                main.nextPage();
+            if (ChecklistApp.leftButton.isClicked(clickX, clickY))
+                main.lastPage();
+
+
+            //handle checkbox
+            if (ChecklistApp.checkBox.isClicked(clickX,clickY)){
+                ChecklistApp.checkBox.bitmap = ChecklistApp.checkBox.bitmapDown;
+                ChecklistApp.checkBox.isActive=false;
+            }
+            //if the checkbox has been clicked add the checkbox arrow to the checkbox
+            //handle more button
+            ChecklistApp.resetButtons();
+                moreBox.leftB.reset();
+                moreBox.rightB.reset();
+                break;
+        }
     return true;
     }
+
     public void update(Canvas canvas){
         moreBox.update(canvas);
         ChecklistApp.checkBox.update(canvas);

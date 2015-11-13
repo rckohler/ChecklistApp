@@ -23,7 +23,7 @@ public class Button {
     }
 
     public void reset(){
-     bitmap= bitmapUp;
+        bitmap= bitmapUp;
         isActive=true;
 
     }
@@ -32,7 +32,7 @@ public class Button {
         boolean ret = false;
         if(bounds.contains(clickX,clickY) && isActive){
             if(bitmap == bitmapUp) bitmap = bitmapDown;
-            if(bitmap == bitmapDown) {
+            else if(bitmap == bitmapDown) {
                 bitmap = bitmapUp;
                 ret =  true;
             }
