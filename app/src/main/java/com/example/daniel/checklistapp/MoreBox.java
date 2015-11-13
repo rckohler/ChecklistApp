@@ -16,7 +16,7 @@ public class MoreBox {
 
     Vector<Textbox> textboxes = new Vector<>();
     Vector<Bitmap> bitmaps = null;
-    int charactersPerLine = 20;
+    int charactersPerLine = 15;
     float x,y;
     Button rightB, leftB;
     public MoreBox(Vector<Textbox>t, Vector<Bitmap> b){

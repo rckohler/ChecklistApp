@@ -11,7 +11,7 @@ import java.util.Vector;
  * Created by Daniel on 10/21/2015.
  */
 public class Textbox {
-    byte charactersPerLine = 40;
+    byte charactersPerLine = 35;
     float x=ChecklistApp.screenWidth*.1f,y = ChecklistApp.screenHeight*.1f;
     float badNumber = 40;
     Paint paint;

@@ -10,7 +10,7 @@ import android.graphics.RectF;
 public class Button {
     RectF bounds;
     float xPos, yPos;
-    Bitmap bitmap;
+    Bitmap bitmap=ChecklistApp.box;
     Bitmap bitmapUp;
     Bitmap bitmapDown;
     boolean isActive = true;

@@ -1,5 +1,8 @@
 package com.example.daniel.checklistapp;
 
+import android.content.Context;
+import android.graphics.Canvas;
+
 import java.util.Vector;
 
 /**
@@ -7,10 +10,29 @@ import java.util.Vector;
  */
 public class Tutorial {
     Vector<Page> pages = new Vector<>();
+    int currentPage = 0;
+    ChecklistApp main;
 
-    public Tutorial(Vector<Page> pages){
-        this.pages = pages;
+    public Tutorial(Context context){
+        main = (ChecklistApp)context;
     }
+
+    public void nextPage(){
+        if(currentPage<10){
+            currentPage++;
+            main.setContentView(pages.elementAt(currentPage));
+            main.checkBox.reset();
+        }
+    }
+
+    public void lastPage(){
+        if(currentPage>0){
+            currentPage--;
+            ChecklistApp.checkBox.reset();
+            main.setContentView(pages.elementAt(currentPage));
+        }
+    }
+
 
 
 }

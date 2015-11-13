@@ -14,15 +14,17 @@ public class Page extends View {
     MoreBox moreBox;
     Textbox textbox;
     ChecklistApp main;
+    Tutorial tutorial;
 
-
-    public Page(Context context,MoreBox m,Textbox t) {
+    public Page(Context context, Tutorial tutorial, MoreBox m,Textbox t) {
         super(context);
         main = (ChecklistApp)(context);
+        this.tutorial = tutorial;
         textbox = t;
         moreBox = m;
 
     }
+
 
     public boolean onTouchEvent(MotionEvent event){
         float clickX, clickY;
@@ -42,9 +44,9 @@ public class Page extends View {
 
             //handle next and back page buttons
             if (ChecklistApp.rightButton.isClicked(clickX, clickY))
-                main.nextPage();
+                tutorial.nextPage();
             if (ChecklistApp.leftButton.isClicked(clickX, clickY))
-                main.lastPage();
+                tutorial.lastPage();
 
             if (ChecklistApp.moreButton.isClicked(clickX,clickY)){
                 if (moreBox.isVisible) moreBox.isVisible = false;
@@ -71,9 +73,9 @@ public class Page extends View {
             }
             //handle next and back page buttons
             if (ChecklistApp.rightButton.isClicked(clickX, clickY))
-                main.nextPage();
+                tutorial.nextPage();
             if (ChecklistApp.leftButton.isClicked(clickX, clickY))
-                main.lastPage();
+                tutorial.lastPage();
 
 
             //handle checkbox
